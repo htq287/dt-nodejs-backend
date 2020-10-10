@@ -1,0 +1,19 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/dist
+
+#
+node_modules
+.idea
+.apikey*.json
+*.log
+.DS_Store
+logs
+*.env
