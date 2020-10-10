@@ -1,4 +1,5 @@
 import express from 'express';
+import config from './config';
 
 class App {
   async init(): Promise<any> {
@@ -14,11 +15,11 @@ class App {
     /**
      * Start Express server
      */
-    app.listen(4011, () => {
+    app.listen(config.port, () => {
       console.log(
         "App is running at http://localhost:%d in %s mode",
-        4011,
-        'dev'
+        config.port,
+        config.env
       );
 
       console.log("Press CTRL-C to stop\n");
