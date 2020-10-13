@@ -13,6 +13,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+const cors_1 = __importDefault(require("cors"));
+const body_parser_1 = __importDefault(require("body-parser"));
+const api_1 = __importDefault(require("./api"));
 const config_1 = __importDefault(require("./config"));
 class App {
     init() {
@@ -23,6 +26,35 @@ class App {
              */
             app.get('/status', (req, res) => {
                 res.status(200).end();
+            });
+            app.use(cors_1.default());
+            // Middleware that transforms the raw string of req.body into json
+            app.use(body_parser_1.default.json());
+            // Load API routes
+            app.use(config_1.default.api.prefix, api_1.default());
+            /// catch 404 and forward to error handler
+            app.use((req, res, next) => {
+                const err = new Error('Not Found');
+                err['status'] = 404;
+                next(err);
+            });
+            /// error handlers
+            app.use((err, req, res, next) => {
+                if (err.name === 'Unauthorized Error') {
+                    return res
+                        .status(err.status)
+                        .send({ message: err.message })
+                        .end();
+                }
+                return next(err);
+            });
+            app.use((err, req, res, next) => {
+                res.status(err.status || 500);
+                res.json({
+                    errors: {
+                        message: err.message,
+                    },
+                });
             });
             /**
              * Start Express server
