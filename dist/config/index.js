@@ -20,7 +20,7 @@ exports.default = {
      * API configs
      */
     api: {
-        prefix: '/api/v1',
+        prefix: 'v1',
     },
 };
 //# sourceMappingURL=index.js.map

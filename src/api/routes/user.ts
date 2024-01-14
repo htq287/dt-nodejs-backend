@@ -8,7 +8,7 @@ export default (app: Router) => {
 
   app.get('/author', async (req: Request, res: Response, next: NextFunction) => {
     try {
-      return res.json({ 'Author': 'Hung Q. Truong' }).status(200);
+      return res.json({ 'Author': 'Hung Q.' }).status(200);
     } catch(e) {
       console.error(e.message);
       return next(e);

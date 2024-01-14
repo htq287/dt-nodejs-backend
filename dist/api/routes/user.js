@@ -15,7 +15,7 @@ exports.default = (app) => {
     app.use('/users', route);
     app.get('/author', (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
         try {
-            return res.json({ 'Author': 'Hung Q. Truong' }).status(200);
+            return res.json({ 'Author': 'Hung Q.' }).status(200);
         }
         catch (e) {
             console.error(e.message);
