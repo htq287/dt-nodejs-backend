@@ -6,8 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const user_1 = __importDefault(require("./routes/user"));
 exports.default = () => {
-    const app = express_1.Router();
-    user_1.default(app);
+    const app = (0, express_1.Router)();
+    (0, user_1.default)(app);
     return app;
 };
 //# sourceMappingURL=index.js.map

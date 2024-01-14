@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
-const route = express_1.Router();
+const route = (0, express_1.Router)();
 exports.default = (app) => {
     app.use('/users', route);
     app.get('/author', (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {

@@ -20,18 +20,18 @@ const config_1 = __importDefault(require("./config"));
 class App {
     init() {
         return __awaiter(this, void 0, void 0, function* () {
-            const app = express_1.default();
+            const app = (0, express_1.default)();
             /**
              * Health Check endpoints
              */
             app.get('/status', (req, res) => {
                 res.status(200).end();
             });
-            app.use(cors_1.default());
+            app.use((0, cors_1.default)());
             // Middleware that transforms the raw string of req.body into json
             app.use(body_parser_1.default.json());
             // Load API routes
-            app.use(config_1.default.api.prefix, api_1.default());
+            app.use(config_1.default.api.prefix, (0, api_1.default)());
             /// catch 404 and forward to error handler
             app.use((req, res, next) => {
                 const err = new Error('Not Found');
