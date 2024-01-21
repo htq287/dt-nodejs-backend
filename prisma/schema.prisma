@@ -3,25 +3,13 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
 model User {
-  id         Int       @id @default(autoincrement())
-  email      String    @unique
-  username   String    @unique
-  password   String
-  image      String?   
-  bio        String?
-}
-
-model Post {
-  id          Int       @id @default(autoincrement())
-  slug        String    @unique
-  title       String
-  description String
-  body        String
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @default(now())
+  id    Int     @id @default(autoincrement())
+  email String  @unique
+  name  String?
+  password String
 }

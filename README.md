@@ -4,8 +4,16 @@ Beautifull backend template, inspired by Nodejs and Typescript
 # Usage
 - Clone repository `git clone https://github.com/htq287/q-nodejs-backend.git`
 - Install packages `npm install`
-- Build `npm run build`
-- Run `npm start`
+
+## Connect the database
+Run the following command to connect your MySQL database. This also creates tables that are defined in `prisma/schema.prisma`:
+
+    npx prisma migrate dev --name init
+
+## Start App
+`npm run build`
+`npm run prod`
+
 
 # License
 The MIT License (MIT)
