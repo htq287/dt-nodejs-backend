@@ -10,17 +10,21 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
-const route = (0, express_1.Router)();
-exports.default = (app) => {
-    app.use('/users', route);
-    app.get('/author', (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-        try {
-            return res.json({ 'Author': 'Hung Q.' }).status(200);
-        }
-        catch (e) {
-            console.error(e.message);
-            return next(e);
-        }
-    }));
-};
-//# sourceMappingURL=user.js.map
+const router = (0, express_1.Router)();
+/**
+ * Get Author Infomation
+ * @auth not required
+ * @route {GET} /author
+ * @returns author Author
+ */
+router.get('/author', (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        return res.json({ 'Author': 'Hung Q.' }).status(200);
+    }
+    catch (e) {
+        console.error(e.message);
+        return next(e);
+    }
+}));
+exports.default = router;
+//# sourceMappingURL=auth.controller.js.map

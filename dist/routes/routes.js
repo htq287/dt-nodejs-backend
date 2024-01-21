@@ -4,10 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
-const user_1 = __importDefault(require("./routes/user"));
-exports.default = () => {
-    const app = (0, express_1.Router)();
-    (0, user_1.default)(app);
-    return app;
-};
-//# sourceMappingURL=index.js.map
+const auth_controller_1 = __importDefault(require("./auth/auth.controller"));
+const api = (0, express_1.Router)()
+    .use(auth_controller_1.default);
+exports.default = api;
+//# sourceMappingURL=routes.js.map

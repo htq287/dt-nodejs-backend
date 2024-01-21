@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const body_parser_1 = __importDefault(require("body-parser"));
-const api_1 = __importDefault(require("./api"));
+const routes_1 = __importDefault(require("./routes/routes"));
 const config_1 = __importDefault(require("./config"));
 class App {
     init() {
@@ -31,7 +31,7 @@ class App {
             // Middleware that transforms the raw string of req.body into json
             app.use(body_parser_1.default.json());
             // Load API routes
-            app.use(config_1.default.api.prefix, (0, api_1.default)());
+            app.use(config_1.default.api.prefix, routes_1.default);
             /// catch 404 and forward to error handler
             app.use((req, res, next) => {
                 const err = new Error('Not Found');
