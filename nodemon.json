@@ -1,7 +1,14 @@
 {
-    "ignore": ["**/*.test.ts", "**/*.spec.ts", ".git", "node_modules"],
-    "watch": ["src"],
-    "exec": "node --inspect=9231 -r ts-node/register src/index.ts",
-    "ext": "ts",
-    "inspect": true
-  }
+  "ignore": [
+    "**/*.test.ts", 
+    "**/*.spec.ts", 
+    ".git", 
+    "node_modules"
+  ],
+  "watch": [
+    "src"
+  ],
+  "exec": "node --inspect=9231 -r ts-node/register src/index.ts",
+  "ext": "ts",
+  "inspect": true
+}
