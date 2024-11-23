@@ -12,7 +12,7 @@ const router = Router();
  * @bodyparam user User
  * @returns user User
  */
-router.post('/users', async (req: Request, res: Response, next: NextFunction):Promise<any> => {
+router.post('/users', async (req: Request, res: Response, next: NextFunction) => {
   try {
     const user = await createUser({ ...req.body.user, demo: false });
     res.status(201).json({ user });
@@ -28,7 +28,7 @@ router.post('/users', async (req: Request, res: Response, next: NextFunction):Pr
  * @bodyparam user User
  * @returns user User
  */
-router.post('/users/login', async (req: Request, res: Response, next: NextFunction):Promise<any> => {
+router.post('/users/login', async (req: Request, res: Response, next: NextFunction) => {
   try {
     const user = await login(req.body.user);
     res.json({ user });
@@ -43,7 +43,7 @@ router.post('/users/login', async (req: Request, res: Response, next: NextFuncti
  * @route {GET} /user
  * @returns user User
  */
-router.get('/user', auth.required, async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+router.get('/user', async (req: Request, res: Response, next: NextFunction) => {
   try {
     const user = await getCurrentUser(req.auth?.user?.id);
     res.json({ user });
@@ -59,8 +59,9 @@ router.get('/user', auth.required, async (req: Request, res: Response, next: Nex
  * @bodyparam user User
  * @returns user User
  */
-router.put('/user', auth.required, async (req: Request, res: Response, next: NextFunction):Promise<any> => {
+router.put('/user', async (req: Request, res: Response, next: NextFunction) => {
   try {
+    console.log(req.body);
     const user = await updateUser(req.body.user, req.auth?.user?.id);
     res.json({ user });
   } catch (error) {
@@ -75,7 +76,7 @@ router.put('/user', auth.required, async (req: Request, res: Response, next: Nex
  * @route {GET} /author
  * @returns author Author
  */
-router.get('/author', async (req: Request, res: Response, next: NextFunction):Promise<any> => {
+router.get('/author', async (req: Request, res: Response, next: NextFunction) => {
   try {
     return res.json({ 'Author': 'Hung Q.' }).status(200);
   } catch(e) {

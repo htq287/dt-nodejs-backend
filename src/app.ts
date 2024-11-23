@@ -5,16 +5,11 @@ import bodyParser from 'body-parser';
 import routes from './routes/routes';
 import config from './config';
 
+import HttpException from './exceptions/http-exception';
+
 class App {
   async init(): Promise<any> {
     const app = express();
-
-    /**
-     * Health Check endpoints
-     */
-    app.get('/status', (req, res) => {
-      res.status(200).end();
-    });
 
     app.use(cors());
      
@@ -24,32 +19,11 @@ class App {
     // Load API routes
     app.use(config.api.prefix, routes);
 
-    /// catch 404 and forward to error handler
-    app.use((req, res, next) => {
-      const err = new Error('Not Found');
-      err['status'] = 404;
-      next(err);
-    });
-
-    /// error handlers
-    app.use((err, req, res, next) => {
-      if (err.name === 'Unauthorized Error') {
-        return res
-          .status(err.status)
-          .send({ message: err.message })
-          .end();
-      }
-
-      return next(err);
-    });
-    
-    app.use((err, req, res, next) => {
-      res.status(err.status || 500);
-      res.json({
-        errors: {
-          message: err.message,
-        },
-      });
+    /**
+     * Health Check endpoints
+     */
+    app.get('/status', (req, res) => {
+      res.status(200).end();
     });
 
     /**

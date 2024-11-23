@@ -149,6 +149,7 @@ export const getCurrentUser = async (id: number) => {
 };
 
 export const updateUser = async (userPayload: any, id: number) => {
+  console.log(userPayload);
   const { email, username, password, image, bio } = userPayload;
   let hashedPassword;
 
