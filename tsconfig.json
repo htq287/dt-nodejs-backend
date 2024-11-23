@@ -1,28 +1,30 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "target": "es6",
-    "typeRoots": [
-      "./node_modules/@types",
-      "./src/types"
-    ],
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "forceConsistentCasingInFileNames": true,
-    "moduleResolution": "node",
-    "pretty": true,
+    "rootDir": ".",
     "sourceMap": true,
-    "outDir": "./dist",
-    "allowJs": true,
-    "noEmit": false,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": "./api",
+    "paths": {},
+    "esModuleInterop": true
   },
-  "include": [
-    "./src/**/*"
+  "files": [],
+  "include": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
   ],
-  "exclude": [
-    "node_modules",
-    "tests"
-  ]
+  "exclude": ["node_modules", "tmp"]
 }
