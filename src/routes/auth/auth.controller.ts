@@ -9,9 +9,9 @@ const router = Router();
  * @route {GET} /author
  * @returns author Author
  */
-router.get('/author', async (req: Request, res: Response, next: NextFunction) => {
+router.get('/author', async (req: Request, res: Response, next: any) => {
   try {
-    return res.json({ 'Author': 'Hung Q.' }).status(200);
+    return res.json({ 'Author': 'Hg Q.' }).status(200);
   } catch(e) {
     console.error(e.message);
     return next(e);
