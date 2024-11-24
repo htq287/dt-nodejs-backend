@@ -128,7 +128,7 @@ export const login = async (userPayload: any) => {
   });
 };
 
-export const getCurrentUser = async (id: number) => {
+export const getUserProfile = async (id: number) => {
   const user = (await prisma.user.findUnique({
     where: {
       id,
@@ -148,8 +148,7 @@ export const getCurrentUser = async (id: number) => {
   };
 };
 
-export const updateUser = async (userPayload: any, id: number) => {
-  console.log(userPayload);
+export const updateUserProfile = async (userPayload: any, id: number) => {
   const { email, username, password, image, bio } = userPayload;
   let hashedPassword;
 

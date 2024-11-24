@@ -1,20 +1,19 @@
 import { NextFunction, Request, Response, Router } from 'express';
 
 import auth from './auth';
-import { createUser, getCurrentUser, login, updateUser } from './auth.service';
+import { createUser, getUserProfile, login, updateUserProfile } from './auth.service';
 
 const router = Router();
 
 /**
- * Create an user
+ * Sign Up
  * @auth none
- * @route {POST} /users
- * @bodyparam user User
- * @returns user User
+ * @route {POST} /signup
  */
-router.post('/users', async (req: Request, res: Response, next: NextFunction) => {
+router.post('/signup', async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const user = await createUser({ ...req.body.user, demo: false });
+    const payload = req.body;
+    const user = await createUser({ ...payload, demo: false });
     res.status(201).json({ user });
   } catch (error) {
     next(error);
@@ -22,15 +21,14 @@ router.post('/users', async (req: Request, res: Response, next: NextFunction) =>
 });
 
 /**
- * Login
+ * Sign In
  * @auth none
- * @route {POST} /users/login
- * @bodyparam user User
- * @returns user User
+ * @route {POST} /signin
  */
-router.post('/users/login', async (req: Request, res: Response, next: NextFunction) => {
+router.post('/signin', async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const user = await login(req.body.user);
+    const payload = req.body;
+    const user = await login(payload);
     res.json({ user });
   } catch (error) {
     next(error);
@@ -38,14 +36,13 @@ router.post('/users/login', async (req: Request, res: Response, next: NextFuncti
 });
 
 /**
- * Get current user
+ * Get user-profile
  * @auth required
- * @route {GET} /user
- * @returns user User
+ * @route {GET} /user/profile
  */
-router.get('/user', async (req: Request, res: Response, next: NextFunction) => {
+router.get('/user/profile', async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const user = await getCurrentUser(req.auth?.user?.id);
+    const user = await getUserProfile(req.auth?.user?.id);
     res.json({ user });
   } catch (error) {
     next(error);
@@ -53,16 +50,13 @@ router.get('/user', async (req: Request, res: Response, next: NextFunction) => {
 });
 
 /**
- * Update user
+ * Update user-profile
  * @auth required
- * @route {PUT} /user
- * @bodyparam user User
- * @returns user User
+ * @route {PUT} /user/profile
  */
-router.put('/user', async (req: Request, res: Response, next: NextFunction) => {
+router.put('/user/profile', async (req: Request, res: Response, next: NextFunction) => {
   try {
-    console.log(req.body);
-    const user = await updateUser(req.body.user, req.auth?.user?.id);
+    const user = await updateUserProfile(req.body, req.auth?.user?.id);
     res.json({ user });
   } catch (error) {
     next(error);
