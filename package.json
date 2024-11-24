@@ -1,7 +1,7 @@
 {
-  "name": "hgq287-backend",
+  "name": "dt-node-hgqbe",
   "version": "1.0.0",
-  "description": "HGQ287 Backend, inspired by Nodejs and Typescript",
+  "description": "dt_hgqbe - a restful-api v1, inspired by Nodejs and Typescript",
   "main": "index.js",
   "scripts": {
     "start": "node ./dist/index.js",

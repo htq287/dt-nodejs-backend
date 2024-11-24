@@ -1,10 +1,10 @@
-# Hgq287 (Backend)
+# dt_hgqbe
 
-HGQ287 Backend, inspired by Nodejs and Typescript
+dt_hgqbe - a restful-api v1, inspired by Nodejs and Typescript
 
 ## Usage
 
-- Clone repository `git clone git@github.com:hgq287/dt-node-hgq287.git`
+- Clone repository `git clone git@github.com:hgq287/dt-node-hgqbe.git`
 - Install packages `npm install`
 
 ### Connect the database
